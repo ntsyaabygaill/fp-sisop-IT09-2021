@@ -7,7 +7,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#define PORT 4442
+#define PORT 4444
 
 int main(int argc, char *argv[]){
 
