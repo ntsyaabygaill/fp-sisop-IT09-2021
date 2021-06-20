@@ -7,13 +7,13 @@ Natasya Abygail N | 05111940000020
 Muhammad Naufal Imantyasto | 05111940000041
 
 ## List of Contents :
-- [AUTENTIKASI](####AUTENTIKASI)
-- [AUTHORISASI](####AUTHORISASI)
-- [DDL](####DDL)
-- [DML](####DML)
-- [LOGGING](####LOGGING)
-- [RELIABILITY](####RELIABILITY)
-- [EXTRA](####EXTRA)
+- [AUTENTIKASI](#AUTENTIKASI)
+- [AUTHORISASI](#AUTHORISASI)
+- [DDL](#DDL)
+- [DML](#DML)
+- [LOGGING](#LOGGING)
+- [RELIABILITY](#RELIABILITY)
+- [EXTRA](#EXTRA)
 
 
 ## SOAL FP ( Sistem Database Sederhana )
@@ -448,8 +448,9 @@ else if (strcmp(tipe,"DATABASE")==0){
 Untuk Fungsi DROP pada sisi client diawali dengan syntax
             ```C
 	    else if (strcmp(command, "DROP")==0){
-                scanf("%s",tipe
+                scanf("%s",tipe)
 	    ```
+
 **DROP DATABASE**
 **SERVER**
 ```C
