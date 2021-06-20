@@ -8,24 +8,13 @@ Muhammad Naufal Imantyasto | 05111940000041
 
 ## List of Contents :
 - [AUTENTIKASI](####AUTENTIKASI)
-	- [CREATE USER](#####CREATE USER)
-	- [1b](#1B)
-	- [1c](#1C)
-	- [1d](#1D)
-	- [1e](#1E)
-	- [1f](#1F)
-	- [1g](#1G)
-	- [1h](#1H)
-- [No 2](#Cara-Pengerjaan)
-	- [2a](#2A)
-	- [2b](#2B)
-	- [2c](#2C)
-- [No 3](#Cara-Pengerjaan)
-	- [3a](#3A)
-	- [3b](#3B)
-	- [3c](#3C)
-	- [3d](#3D)
-	- [3e](#3E)
+- [AUTHORISASI](####AUTHORISASI)
+- [DDL](####DDL)
+- [DML](####DML)
+- [LOGGING](####LOGGING)
+- [RELIABILITY](####RELIABILITY)
+- [EXTRA](####EXTRA)
+
 
 ## SOAL FP ( Sistem Database Sederhana )
 
@@ -68,8 +57,130 @@ databaseku/
 ```
 
 ### Bagaimana Database Digunakan
+	- AUTENTIKASI
+		- SUDO
+		- CREATE USER
+	- AUTHORISASI
+		- USE
+		- GRANT PERMISSION
+	- DDL [ Data Definition Language ]
+		- CREATE DATABASE 
+		- CREATE TABLE 
+		- DROP [DATABASE | TABLE | COLUMN]
+	- DML [ Data Manipulation Language ]
+		- INSERT INTO
+		- UPDATE
+		- DELETE FROM
+		- SELECT
+		- WHERE 
+		- 
+	- LOGGING 
+	- RELIABILITY
+			
+
+## PENYELESAIAN
+
+Dibawah ini adalah library yang digunakan :
+
+**SERVER**
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <sys/stat.h>
+#include <dirent.h>
+
+#define PORT 4444
+```
+**CLIENT**
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
+#define PORT 4444
+```
+
+Dibawah ini adalah proses Connecting Socket antara Server dan Client :
+
+**SERVER**
+```C
+int sockfd, ret;
+    struct sockaddr_in serverAddr;
+
+    int newSocket;
+    struct sockaddr_in newAddr;
+
+    socklen_t addr_size;
+
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if(sockfd < 0){
+    printf("[-]Error in connection.\n");
+    exit(1);
+    }
+    printf("[+]Server Socket is created.\n");
+
+    memset(&serverAddr, '\0', sizeof(serverAddr));
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_port = htons(PORT);
+    serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+
+    ret = bind(sockfd, (struct sockaddr*)&serverAddr, sizeof(serverAddr));
+    if(ret < 0){
+    printf("[-]Error in binding.\n");
+    exit(1);
+    }
+    printf("[+]Bind to port %d\n", 4444);
+
+    if(listen(sockfd, 10) == 0){
+    printf("[+]Listening....\n");
+    }else{
+    printf("[-]Error in binding.\n");
+    }
+  ```
+
+**CLIENT**
+```C
+ int clientSocket, ret;
+    struct sockaddr_in serverAddr;
+
+    clientSocket = socket(AF_INET, SOCK_STREAM, 0);
+    if(clientSocket < 0){
+    printf("[-]Error in connection.\n");
+    exit(1);
+    }
+    printf("[+]Client Socket is created.\n");
+
+    memset(&serverAddr, '\0', sizeof(serverAddr));
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_port = htons(PORT);
+    serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+
+    ret = connect(clientSocket, (struct sockaddr)&serverAddr, sizeof(serverAddr));
+    if(ret < 0){
+    printf("[-]Error in connection.\n");
+    exit(1);
+    }
+    printf("[+]Connected to Server.\n");
+```
+
+### Bagaimana Database Digunakan
 #### AUTENTIKASI
-##### CREATE USER
+##### - SUDO
+
+
+
+##### - CREATE USER
 
 **CLIENT**
 ```C
@@ -103,3 +214,6 @@ if (strcmp(fin,"1")==0){
                 strcpy(buffer,fin);
             }
 ```
+
+#### AUTENTIKASI
+##### - USE
