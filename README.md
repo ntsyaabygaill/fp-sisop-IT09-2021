@@ -8,7 +8,7 @@ Muhammad Naufal Imantyasto | 05111940000041
 
 ## List of Contents :
 - [AUTENTIKASI](####AUTENTIKASI)
-	- [CREATE USER](##### CREATE USER)
+	- [CREATE USER](#####CREATE USER)
 	- [1b](#1B)
 	- [1c](#1C)
 	- [1d](#1D)
@@ -70,4 +70,36 @@ databaseku/
 ### Bagaimana Database Digunakan
 #### AUTENTIKASI
 ##### CREATE USER
-adaa sesuatu disini
+
+**CLIENT**
+```C
+if(strcmp(tipe,"USER")==0){
+                        scanf("%s",uname);
+                        scanf("%s %s",dump1,dump2);
+                        scanf("%s",password);
+                        strcpy(buffer,"1 ");
+                        strcat(buffer,uname);
+                        strcat(buffer,":");
+                        strcat(buffer,password);
+                        potong = strtok(buffer,";");
+                        strcpy(buffer,potong);
+                        //check root
+                        if (permission==0)
+                            send(clientSocket, buffer, strlen(buffer), 0);
+                        else
+                            printf("Unauthorized\n");
+                            continue;
+                }
+```
+**SERVER**
+```C
+if (strcmp(fin,"1")==0){
+                fp = fopen("databases/user.txt", "a+");
+                fin = strtok(NULL," ");
+                strcat(fin,"\n");
+                fputs(fin,fp);
+                fclose(fp);
+                printf("%s\n",fin);
+                strcpy(buffer,fin);
+            }
+```
