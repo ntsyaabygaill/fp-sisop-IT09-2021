@@ -342,6 +342,7 @@ else if (strcmp(fin,"3")==0){
 ```
 #### DDL [ Data Definition Language ]
 ##### - CREATE DATABASE 
+
 **SERVER**
 ```C
 else if (strcmp(fin,"4")==0){
@@ -382,6 +383,7 @@ else if (strcmp(tipe,"DATABASE")==0){
 ```
 
 ##### - CREATE TABLE 
+
 **SERVER**
 ```C
  else if (strcmp(fin,"5")==0){
@@ -452,6 +454,7 @@ Untuk Fungsi DROP pada sisi client diawali dengan syntax
 	    ```
 
 **DROP DATABASE**
+
 **SERVER**
 ```C
   else if (strcmp(fin,"6")==0){
@@ -481,6 +484,7 @@ Untuk Fungsi DROP pada sisi client diawali dengan syntax
                 }
 ```
 **DROP TABLE**
+
 **SERVER**
 ```C
  else if (strcmp(fin,"7")==0){
@@ -512,6 +516,7 @@ else if (strcmp(tipe,"TABLE")==0){
                 }
 ```
 **DROP COLUMN**
+
 **SERVER**
 ```C
 else if (strcmp(fin,"8")==0){
